@@ -59,25 +59,63 @@ public class Algorithms {
 	}
 	
 	public static List<Double> sortScores(List<Double> scores){
-		List<Double>scoreList=new ArrayList<Double>();
-		scoreList.add(scores.get(0));
-		System.out.println(scores);
-		for (int i = 0; i < scores.size(); i++) {
-			
-			for (int j = 0; j < scoreList.size(); j++) {
-				if(scores.get(i)<scoreList.get(j)) {
-					scoreList.add((j-1), scores.get(i));
-				}
-				
-				else {
-					scoreList.add(scores.get(i));
-					
+		List<Double> sortedList = new ArrayList<Double>();
+		sortedList.add(0, scores.get(0));
+		for (int i = 1; i < scores.size(); i++){
+			boolean foundSpot = false;
+			for (int j = 0; j < sortedList.size(); j++) {
+				if (scores.get(i)<sortedList.get(j)) {
+					sortedList.add(j, scores.get(i));
+					foundSpot = true;
+					break;
 				}
 			}
-			
+			if (!foundSpot) {
+				sortedList.add(scores.get(i));
+			}
 		}
-		System.out.println(scoreList);
-		return scoreList;
+		System.out.println(sortedList);
+		return sortedList;
+	}
+	
+	public static List<String> sortDNA(List<String> DNA){
+		List<String> sortedList = new ArrayList<String>();
+		sortedList.add(0, DNA.get(0));
+		for (int i = 1; i < DNA.size(); i++){
+			boolean foundSpot = false;
+			for (int j = 0; j < sortedList.size(); j++) {
+				if (DNA.get(i).length()<sortedList.get(j).length()) {
+					sortedList.add(j, DNA.get(i));
+					foundSpot = true;
+					break;
+				}
+			}
+			if (!foundSpot) {
+				sortedList.add(DNA.get(i));
+			}
+		}
+		System.out.println(sortedList);
+		return sortedList;
+	}
+	
+	public static List<String> sortWords(List<String> Words){
+		List<String> sortedList = new ArrayList<String>();
+		sortedList.add(0, Words.get(0));
+		for (int i = 1; i < Words.size(); i++){
+			boolean foundSpot = false;
+			for (int j = 0; j < sortedList.size(); j++) {
+				if (Words.get(i).compareTo(sortedList.get(j))<0) {
+					sortedList.add(j, Words.get(i));
+					foundSpot = true;
+					break;
+				}
+			}
+			if (!foundSpot) {
+				sortedList.add(Words.get(i));
+			}
+		}
+		System.out.println(sortedList);
+		return sortedList;
 	}
 	//Add other methods here
 	
